@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Repository Display</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <form action="/display" method="get">
+        <div class="d1">
+            <h2><span class="txt">Użytkownik: </span><span class="info" th:text="${accName}"></span></h2>
+        </div>
+        <div class="d2">
+            <h3><span class="txt">Ostatnio aktualizowane repozytorium: </span><span class="info" th:text="${repoName}"></span></h3>
+            <h4><span class="txt">Data aktualizacji: </span><span class="info" th:text="${repoDate}"></span></h4>
+            <input type="submit" id="button" value="Sprawdź"/>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
