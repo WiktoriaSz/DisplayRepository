@@ -13,13 +13,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@Primary
-public class UserAllegro implements UserRepository {
+public class UserWiktoria implements UserRepository {
     private URI urlApiRepos;
 
     {
         try {
-            urlApiRepos = new URI("https://api.github.com/user/562236/repos");
+            urlApiRepos = new URI("https://api.github.com/user/47928697/repos");
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
@@ -32,18 +31,19 @@ public class UserAllegro implements UserRepository {
 
     @Override
     public String getAccountName() {
-        return "Allegro";
+        return "Wiktoria";
     }
 
     @Override
     public List<Repository> getRepositoryListFromRestTemplateGetMethod(
-            UserRepository allegroUser, RestTemplate restTemplate) {
-        ResponseEntity<List<RepositoryAllegro>> response = restTemplate.exchange(
-                allegroUser.getUrlApiRepos(),
+            UserRepository userWiktoria, RestTemplate restTemplate) {
+        ResponseEntity<List<RepositoryMyOwn>> response = restTemplate.exchange(
+                userWiktoria.getUrlApiRepos(),
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<List<RepositoryAllegro>>() {
+                new ParameterizedTypeReference<List<RepositoryMyOwn>>() {
                 });
         return new ArrayList<>(response.getBody());
     }
+
 }

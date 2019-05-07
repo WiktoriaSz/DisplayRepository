@@ -12,7 +12,7 @@ import java.time.ZonedDateTime;
 @Controller
 public class HomeController {
     @Autowired
-    UserRepository allegroUser;
+    UserRepository user;
     @Autowired
     Repository repository;
     @Autowired
@@ -20,15 +20,15 @@ public class HomeController {
 
     @GetMapping("/")
     public String showMain(Model model) {
-        model.addAttribute("accName", allegroUser.getAccountName());
+        model.addAttribute("accName", user.getAccountName());
         return "index";
     }
 
     @GetMapping("/display")
     public String displayRepository(Model model) {
-        model.addAttribute("accName", allegroUser.getAccountName());
-        Repository repo = allegroUser.getRecentlyPushed(
-                allegroUser.getRepositoryListFromRestTemplateGetMethod(allegroUser, restTemplate),
+        model.addAttribute("accName", user.getAccountName());
+        Repository repo = user.getRecentlyPushed(
+                user.getRepositoryListFromRestTemplateGetMethod(user, restTemplate),
                 LocalDateTime.now());
         model.addAttribute("repoName", repo.getName());
         model.addAttribute("repoDate", ZonedDateTime.parse(repo.getPushed_at()).toLocalDateTime());
